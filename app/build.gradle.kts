@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.gms)
 }
 
 android {
@@ -68,5 +69,7 @@ implementation("androidx.constraintlayout:constraintlayout-compose:1.1.1")
 implementation("androidx.compose.foundation:foundation:1.7.8")
 implementation("com.google.accompanist:accompanist-systemuicontroller:0.36.0")
 implementation("com.google.maps.android:maps-compose:2.0")
-
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.analytics)
+    implementation(libs.google.firebase.database)
 }
