@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "173655919921",
+    "project_id": "nearbarber-78f06",
+    "storage_bucket": "nearbarber-78f06.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:173655919921:android:5fa9a9e046882e9c3cb410",
+        "android_client_info": {
+          "package_name": "com.glyadgzl.nearbarber"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEtWUzHT8cEa4sInaWTA3AVf8hbjUJnvc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
