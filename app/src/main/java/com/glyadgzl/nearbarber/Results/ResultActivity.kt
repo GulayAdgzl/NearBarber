@@ -52,5 +52,6 @@ LaunchedEffect (Unit) {
         item{
             Search()
         }
+        item{SubCategorySection(subCategory,showsubCategoryLoading)}
     }
 }
