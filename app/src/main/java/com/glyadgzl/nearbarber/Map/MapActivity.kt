@@ -62,7 +62,22 @@ fun MapScreen(latLng: LatLng, item: StoreModel) {
              }
        ) {
         item{ItemsNearest( item)}
-        item{}
+        item{
+            Button(
+   shape = RoundedCornerShape(10.dp),
+   colors = ButtonDefaults.buttonColors(
+       containerColor = ColorResource(R.color.blue)
+   ),
+   modifier = Modifier
+       .padding(8.dp)
+       .fillMaxWidth(),
+   
+   onClick = {
+       val phoneNumber = "tel:" + item.Call
+       val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse(phoneNumber))
+       context.startActivity(dialIntent)
+   })
+        }
         }
    }
        }
