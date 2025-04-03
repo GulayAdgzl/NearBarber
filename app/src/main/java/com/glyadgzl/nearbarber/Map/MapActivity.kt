@@ -19,6 +19,10 @@ class MapActivity : AppCompatActivity() {
             
             val latitude = item.latitude
             val longitude = item.longitude
+            MapScreen(
+            LatLng(latitude, longitude),
+                 item
+            )
         }
     }
 }
