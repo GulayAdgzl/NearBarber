@@ -60,6 +60,40 @@ fun NearestSection(list:SnapshotStateList<NearestModel>, showNearestLoading: Boo
             }
 }
 @Composable
+fun StoreDetail(item: StoreModel) {
+   Column(
+       modifier = Modifier
+           .fillMaxHeight()
+           .padding(start = 8.dp),
+       verticalArrangement = Arrangement.spacedBy(8.dp)
+   ) {
+       Text(
+           text = item.Title,
+           color = Color.Black,
+           fontSize = 14.sp,
+           fontWeight = FontWeight.Bold,
+           maxLines = 1
+       )
+       Row(verticalAlignment = Alignment.CenterVertically) {
+           Image(painter = painterResource(R.drawable.location),contentDescription = null)
+           Text(
+   text = item.Address,
+   color = Color.Black,
+   fontSize = 12.sp,
+   maxLines = 1,
+   modifier = Modifier.padding(start = 4.dp)
+)
+}
+Text(
+   text = item.Title,
+   color = Color.Black,
+   fontSize = 14.sp,
+   fontWeight = FontWeight.Bold,
+   maxLines = 1)
+       
+   }
+}
+@Composable
 fun StoreImage(item: StoreModel) {
     AsyncImage(
         model = item.ImagePath,
