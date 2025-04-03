@@ -1,3 +1,5 @@
+import java.io.Serializable
+
 data class StoreModel(
     var Id:Int=0,
     var CategoryId:String="",

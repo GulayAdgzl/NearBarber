@@ -1,3 +1,5 @@
+import androidx.lifecycle.LiveData
+
 class ResultsViewModel {
     private val repository = ResultsRepository()
  
@@ -8,7 +10,7 @@ class ResultsViewModel {
     fun loadPopular(id: String): LiveData<MutableList<StoreModel>> {
         return repository.loadPopular(id)
     }
-    fun loadNearest(id: String): LiveData<MutableList<NearestModel>> {
+    fun loadNearest(id: String): LiveData<MutableList<StoreModel>> {
         return repository.loadNearest(id)
     }
  }

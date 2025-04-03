@@ -7,6 +7,6 @@ class DashboardViewModel{
     }
 
     fun loadBanner(): LiveData<MutableList<BannerModel>> {
-        return repository.loadBannner()
+        return repository.loadBanner()
     }
 }
