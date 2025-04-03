@@ -89,6 +89,11 @@ fun NearestSection(list: SnapshotStateList<StoreModel>, showNearestLoading: Bool
                 .padding(8.dp)
                 .clickable {
                     // Handle click event here
+
+                    val intent=Intent(context, MapActivity::class.java).apply{
+                        putExtra("object", item)
+                    }
+                    startActivity(context, intent, null)
                 }
             ){
                 StoreImage(item=item)
