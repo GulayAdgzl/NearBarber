@@ -20,7 +20,17 @@ fun TopTitle(title:String="title",onBackClick:()->Unit={}) {
                    .clickable { }
            )
            
-           Text(text =title)
+           Text(
+            text = title + " Stores Result",
+            fontSize = 20.sp,
+            color = Color.White,
+            modifier = Modifier
+                .weight(1f)
+                .padding(horizontal = 16.dp),
+            fontWeight = FontWeight.Bold
+         )
+         Image(painter = painterResource(R.drawable.sample)
+            , contentDescription = null)
        }
     }
 }
