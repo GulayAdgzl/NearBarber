@@ -5,4 +5,8 @@ class DashboardViewModel{
     fun loadCategory(): LiveData<MutableList<CategoryModel>> {
         return repository.loadCategory()
     }
+
+    fun loadBanner(): LiveData<MutableList<BannerModel>> {
+        return repository.loadBannner()
+    }
 }
