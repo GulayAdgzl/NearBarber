@@ -45,7 +45,7 @@ fun MapScreen(latLng: LatLng, item: StoreModel) {
                },
            cameraPositionState = cameraPositionState
        ) {
-           Marker(state = MarkerState(position = latLng), title = "Location Marker")
+           Marker(state = MarkerState(position = latLng), title = "Konum İşaretçisi")
        }
        
        LazyColumn (
