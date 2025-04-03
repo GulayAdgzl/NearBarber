@@ -92,7 +92,10 @@ fun PopularSection(list:SnapshotStateList<StoreModel>, showPopularLoading: Boole
                     .background(Color.White, shape = RoundedCornerShape(10.dp))
                     .padding(8.dp)
                     .clickable {
-
+                        val intent=Intent(context, MapActivity::class.java).apply{
+                            putExtra("object", item)
+                        }
+                        startActivity(context, intent, null)
                     }
             ){
                 AsyncImage(
