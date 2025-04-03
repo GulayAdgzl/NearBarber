@@ -76,7 +76,11 @@ fun MapScreen(latLng: LatLng, item: StoreModel) {
        val phoneNumber = "tel:" + item.Call
        val dialIntent = Intent(Intent.ACTION_DIAL, Uri.parse(phoneNumber))
        context.startActivity(dialIntent)
-   })
+   }
+   ){
+    Text("Kuaförü Ara",fontSize = 16.sp,
+        color = Color.White,
+        fontWeight = FontWeight.Bold,)
         }
         }
    }
