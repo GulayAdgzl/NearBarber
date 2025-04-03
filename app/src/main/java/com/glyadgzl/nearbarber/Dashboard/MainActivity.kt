@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
 @Preview
 fun DashboardScreen() {
     val systemUiController=rememberSystemUiController()
-    systemUiController.setStatusBarColor(color = colorResource(R.color.gray))
+    systemUiController.setStatusBarColor(color = colorResource(id=R.color.gray))
         Scaffold(
             
             bottomBar = { MyBottomBar() }
