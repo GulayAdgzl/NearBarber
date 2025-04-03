@@ -48,4 +48,27 @@ class ResultsRepository {
         })
         return listData
     }
+    fun loadPNearest(id:String):LiveData<MutableList<StoreModel>>{
+ 
+        val listData=MutableLiveData<MutableList<StoreModel>>()
+        val ref=firebaseDatabase.getReference("Nearest")
+        val query:Query=ref.orderByChild(path:"CategoryId").equalTo(id)
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val list= mutableListOf<StoreModel>()
+                for(childSnapshot in snapshot.children){
+                    val list=childSnapshot.getValue(StoreModel::class.java)
+                    if(list!=null){
+                        list.add(list)
+                    }
+                }
+                listData.value=list
+            }
+ 
+            override fun onCancelled(error: DatabaseError) {
+                TODO(reason:"Not yet implemented")
+            }
+        })
+        return listData
+    }
  }
