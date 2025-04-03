@@ -37,7 +37,10 @@ fun SubCategorySection(
                     horizontalAlignment = Alignment.CenterHorizontally
                 ){
                     AsyncImage(model = item.ImagePath
-                        ,contentDescription = null
+                        ,contentDescription = null,
+                        modifier=Modifier
+                        .padding(top=16.dp)
+                        size(45.dp,40.dp)
                     )
                 }
         }
