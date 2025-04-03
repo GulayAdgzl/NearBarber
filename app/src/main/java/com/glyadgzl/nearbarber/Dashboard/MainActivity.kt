@@ -38,7 +38,7 @@ fun DashboardScreen() {
                     .backgroundColor(color=colorResource(R.color.lightBlue))
                     .padding(paddingValues=innerPadding)
             ) {
-                
+                item{TopBar()}
             }
         }
     
