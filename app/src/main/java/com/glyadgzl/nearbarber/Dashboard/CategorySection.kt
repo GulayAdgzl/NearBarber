@@ -15,6 +15,17 @@ fun CategoryItem(
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ){
-        
+        AsyncImage(
+    model = category.ImagePath,
+    contentDescription = null,
+    modifier=Modifier.size(65.dp)
+)
+Text(
+    text=category.Name,
+    color = Color.Black,
+    fontSize = 14.sp,
+    fontWeight = FontWeight.SemiBold,
+    modifier = Modifier.padding(top=8.dp)
+)
     }
 }
