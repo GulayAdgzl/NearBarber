@@ -75,5 +75,29 @@ Text(
    overflow = TextOverflow.Ellipsis,
    modifier = Modifier.padding(top=8.dp)
 )
+Row(
+    Modifier.padding(top=8.dp)
+){
+Image(
+    painter = painterResource(R.drawable.location),
+    contentDescription = null,
+    
+)
+
+Text(
+   text=item.ShortAddress,
+   color = Color.Black,
+   fontSize = 14.sp,
+   fontWeight = FontWeight.SemiBold,
+   maxLines = 1,
+   overflow = TextOverflow.Ellipsis,
+   modifier = Modifier.padding(start=8.dp)
+)
+}
+
+
+
+
+
             }
          }
