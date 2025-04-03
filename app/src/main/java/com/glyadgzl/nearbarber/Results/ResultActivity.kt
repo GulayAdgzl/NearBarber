@@ -44,6 +44,18 @@ LaunchedEffect (Unit) {
 }
 
 
+val popular = remember { mutableStateListOf<StoreModel>() }
+
+var showPopularLoading by remember { mutableStateOf(value: true) }
+
+LaunchedEffect (Unit) {
+    viewModel.loadPopular(id).observeForever {
+        popular.clear()
+        popular.addAll(it)
+        showPopularLoading = false
+    }
+}
+
     LazyColumn (
         modifier=Modifier.fillMaxSize().
         background(color = colorResource(R.color.light_blue))
