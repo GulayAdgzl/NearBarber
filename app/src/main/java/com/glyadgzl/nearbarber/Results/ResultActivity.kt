@@ -28,6 +28,22 @@ class ResultsActivity : AppCompatActivity() {
 @Preview
 fun ResultList(id: String="1", title: String="", onBackClick: () -> Unit={}) {
 
+
+    val viewModel = ResultsViewModel()
+
+val subCategory = remember { mutableStateListOf<CategoryModel>() }
+
+var showsubCategoryLoading by remember { mutableStateOf(value: true) }
+
+LaunchedEffect (Unit) {
+    viewModel.loadSubCategory(id).observeForever {
+        subCategory.clear()
+        subCategory.addAll(it)
+        showsubCategoryLoading = false
+    }
+}
+
+
     LazyColumn (
         modifier=Modifier.fillMaxSize().
         background(color = colorResource(R.color.light_blue))
