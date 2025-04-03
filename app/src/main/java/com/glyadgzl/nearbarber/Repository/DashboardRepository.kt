@@ -10,13 +10,17 @@ class DashboardRepository {
                 val list = mutableListOf<CategoryModel>()
                 for(childSnapshot in snapshot.children){
                     val item=childSnapshot.getValue(CategoryModel::class.java)
-                    item?.let{}
+                    item?.let{
+                        list.add(it)
+                    }
                 }
+                listData.value = list
             }
 
             override fun onCancelled(error: DatabaseError) {
                 TODO(reason: "Not yet implemented")
             }
         })
+        return listData
     }
 }
