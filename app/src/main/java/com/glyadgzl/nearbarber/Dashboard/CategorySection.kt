@@ -7,6 +7,50 @@ fun CategorySection(
         fontWeight = FontWeight.SemiBold,
         modifier = Modifier.padding(horizontal = 16.dp).padding(top=24.dp)
     )
+    if(showCategoryLoading){
+        Box(modifier = Modifier
+            .fillMaxWidth()
+            .height(200.dp),
+            contentAlignment = Alignment.Center
+        ){
+            CircularProgressIndicator()
+        }
+    }else{
+        val rows=categories.chunked(size: 3)
+        val context= LocalContext.current
+        
+        Column (modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+        ){
+            rows.forEach { row->
+                Row (modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical=8.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ){
+                    row.forEachIndexed{index,categoryModel ->
+                        CategoryItem(
+                            category = categoryModel,
+                            modifier = 
+                            Modifier.weight(1f).padding(horizontal=8.dp),
+                            onItemClick = {
+                                
+                            }
+                        )
+                    }
+                 }
+                 if(row.size<3){
+                     repeat(3-row.size){
+                        Spacer(Modifier.weight(1f))
+                     }
+                 }
+            }
+        }
+    }
+
+
+
 }
 
 
