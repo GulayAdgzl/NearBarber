@@ -25,7 +25,8 @@ class ResultsActivity : AppCompatActivity() {
 }
 
 @Composable
-fun ResultList(id: String="1", title: String="result", onBackClick: () -> Unit) {
+@Preview
+fun ResultList(id: String="1", title: String="", onBackClick: () -> Unit={}) {
 
     LazyColumn (
         modifier=Modifier.fillMaxSize().
