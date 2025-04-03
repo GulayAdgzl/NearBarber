@@ -42,6 +42,12 @@ fun SubCategorySection(
                         .padding(top=16.dp)
                         size(45.dp,40.dp)
                     )
+                    Spacer(Modifier.padding(top=12.dp))
+                    Text(text = item.Name,
+                        fontSize = 14.sp,
+                        color = Color.Black,
+                        fontWeight = FontWeight.SemiBold
+                    )
                 }
         }
      
