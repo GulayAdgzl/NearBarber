@@ -1,4 +1,5 @@
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -14,6 +15,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
@@ -32,9 +34,8 @@ fun MyBottomBar(){
 
     BottomAppBar(
 
-        /*background = colorResource(R.color.white),
-        elevation = 3.dp*/
-        containerColor = BottomAppBarDefaults.containerColor,
+
+
 
     ) {
         bottomMenuItemsList.forEach { bottomMenuItems ->
@@ -49,17 +50,13 @@ fun MyBottomBar(){
                         Icon(
                             painter = bottomMenuItems.icon,
                             contentDescription = null,
-                            tint = colorResource(R.color.darkBrown),
+
                             modifier = Modifier
                                 .padding(top = 8.dp)
+                                .background(Color.Transparent)
                                 .size(20.dp)
                         )
-                        Text(
-                            text=bottomMenuItems.label,
-                            fontSize = 12.sp,
-                            color= colorResource(R.color.darkBrown),
-                            modifier = Modifier.padding(top = 8.dp),
-                        )
+
                     }
                 }
             )
@@ -74,10 +71,10 @@ data class BottomMenuItem(
 @Composable
 fun prepareBottomMenu():List<BottomMenuItem>{
     val bottomMenuItemsList= listOf(
-        BottomMenuItem("Home", painterResource(id = R.drawable.home)),
+        BottomMenuItem("Home", painterResource(id = R.drawable.btn_1)),
 
-        BottomMenuItem("Profile", painterResource(id = R.drawable.pro)),
-        BottomMenuItem("ChatBot", painterResource(id = R.drawable.chat))
+        BottomMenuItem("Profile", painterResource(id = R.drawable.btn_4)),
+        BottomMenuItem("ChatBot", painterResource(id = R.drawable.btn_2))
     )
     return bottomMenuItemsList
 }

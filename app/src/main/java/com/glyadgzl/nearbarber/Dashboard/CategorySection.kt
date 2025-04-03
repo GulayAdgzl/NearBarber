@@ -22,7 +22,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.glyadgzl.nearbarber.R
+
 
 
 @Composable
@@ -31,14 +31,14 @@ fun CategorySection(
     showCategoryLoading: Boolean
 ) {
     Text(
-        text = "Popular places",
+        text = "Categori",
         fontSize = 20.sp,
         fontWeight = FontWeight.SemiBold,
         modifier = Modifier
             .padding(horizontal = 16.dp)
             .padding(top = 24.dp)
     )
-    
+
     if (showCategoryLoading) {
         Box(
             modifier = Modifier
@@ -51,7 +51,7 @@ fun CategorySection(
     } else {
         val rows = categories.chunked(3)
         val context = LocalContext.current
-        
+
         Column(
             modifier = Modifier
                 .fillMaxWidth()
@@ -75,7 +75,7 @@ fun CategorySection(
                             }
                         )
                     }
-                    
+
                     if (row.size < 3) {
                         repeat(3 - row.size) {
                             Spacer(modifier = Modifier.weight(1f))
@@ -96,10 +96,7 @@ fun CategoryItem(
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .background(
-                color = colorResource(R.color.white),
-                shape = RoundedCornerShape(13.dp)
-            )
+
             .clickable(onClick = onItemClick)
             .padding(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
@@ -107,7 +104,7 @@ fun CategoryItem(
         AsyncImage(
             model = category.ImagePath,
             contentDescription = null,
-            modifier = Modifier.size(65.dp)
+            modifier = Modifier.size(100.dp) // Resim boyutu büyütüldü
         )
         Text(
             text = category.Name,
