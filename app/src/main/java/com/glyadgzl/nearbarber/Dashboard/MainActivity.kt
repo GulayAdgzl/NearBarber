@@ -29,7 +29,22 @@ class MainActivity : ComponentActivity() {
 fun DashboardScreen() {
     val systemUiController=rememberSystemUiController()
     systemUiController.setStatusBarColor(color = colorResource(id=R.color.gray))
-        Scaffold(
+        
+    val viewModel=DashboardRepository()
+    val categories=remember{mutableStateOf( mutableListOf<CategoryModel>())}
+    val showCategoryLoading by remember{mutableStateOf(value = true)}
+
+    LaunchedEffect(Unit){
+        viewModel.loadCategory().observeForever{
+            categories.clear()
+            categories.addAll(it)
+            showCategoryLoading=false
+        }
+    }
+    
+    
+    
+    Scaffold(
             
             bottomBar = { MyBottomBar() }
         ) { innerPadding ->
