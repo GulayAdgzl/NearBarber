@@ -6,7 +6,7 @@ fun NearestSection(list:SnapshotStateList<NearestModel>, showNearestLoading: Boo
             .padding(top = 16.dp)
      ) {
         Text(
-            text = "Popular Stores",
+            text = "Nearest Stores",
             color = Color.Black,
             fontSize = 20.sp,
             fontWeight = FontWeight.SemiBold,
@@ -46,58 +46,29 @@ fun NearestSection(list:SnapshotStateList<NearestModel>, showNearestLoading: Boo
          @Composable
          fun ItemsNearest(item: StoreModel) {
             val context = LocalContext.current
-            
-            Column (
-                modifier = Modifier
-                    .padding(vertical = 8.dp)
-                    .wrapContentSize()
-                    .background(Color.White, shape = RoundedCornerShape(10.dp))
-                    .padding(8.dp)
-                    .clickable {
-
-                    }
+            Row(
+                modifier=Modifier
+                .fillMaxWidth()
+                .background(Color.White, shape = RoundedCornerShape(10.dp))
+                .padding(8.dp)
+                .clickable {
+                    // Handle click event here
+                }
             ){
-                AsyncImage(
-   model = item.ImagePath,
-   contentDescription = null,
-   modifier = Modifier
-       .size(135.dp, 90.dp)
-       .clip(RoundedCornerShape(10.dp))
-       .background(colorResource(R.color.grey), shape = RoundedCornerShape(10.dp)),
-   contentScale = ContentScale.Crop
-)
-Text(
-   text=item.Title,
-   color = Color.Black,
-   fontSize = 14.sp,
-   fontWeight = FontWeight.Bold,
-   maxLines = 1,
-   overflow = TextOverflow.Ellipsis,
-   modifier = Modifier.padding(top=8.dp)
-)
-Row(
-    Modifier.padding(top=8.dp)
-){
-Image(
-    painter = painterResource(R.drawable.location),
-    contentDescription = null,
-    
-)
-
-Text(
-   text=item.ShortAddress,
-   color = Color.Black,
-   fontSize = 14.sp,
-   fontWeight = FontWeight.SemiBold,
-   maxLines = 1,
-   overflow = TextOverflow.Ellipsis,
-   modifier = Modifier.padding(start=8.dp)
-)
-}
-
-
-
-
-
+                StoreImage(item=item)
+                StoreDetails(item=item)
             }
-         }
+}
+@Composable
+fun StoreImage(item: StoreModel) {
+    AsyncImage(
+        model = item.ImagePath,
+        contentDescription = null,
+        modifier = Modifier
+            .size(95.dp)
+            .clip(RoundedCornerShape(10.dp))
+            .background(color = colorResource(R.color.blue),shape = RoundedCornerShape(10.dp)),
+        contentScale = ContentScale.Crop
+    )
+   
+}
