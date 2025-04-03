@@ -65,5 +65,6 @@ LaunchedEffect (Unit) {
             Search()
         }
         item{SubCategorySection(subCategory,showsubCategoryLoading)}
+        item{PopularSection(popular,showPopularLoading)}
     }
 }
