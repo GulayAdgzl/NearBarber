@@ -48,7 +48,7 @@ fun DashboardScreen() {
     val banners=remember{ mutableListOf<BannerModel>()}
     var showBannerLoading by remember{mutableStateOf(value = true)}
     LaunchedEffect(Unit){
-        viewModel.loadCategory().observeForever{
+        viewModel.loadBanner().observeForever{
             banners.clear()
             banners.addAll(it)
             showBannerLoading=false
@@ -56,7 +56,7 @@ fun DashboardScreen() {
         }
     }
     LaunchedEffect(Unit){
-        viewModel.loadBanner().observeForever{
+        viewModel.loadCategory().observeForever{
             categories.clear()
             categories.addAll(it)
             showCategoryLoading=false
@@ -78,6 +78,7 @@ fun DashboardScreen() {
             ) {
                 item{TopBar()}
                 item{CategorySection(categories ,showCategoryLoading)}
+                item{Banner(banners ,showBannerLoading)}
             }
         }
     
