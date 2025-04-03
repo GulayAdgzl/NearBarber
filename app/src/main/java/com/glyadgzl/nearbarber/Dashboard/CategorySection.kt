@@ -1,4 +1,16 @@
 @Composable
+fun CategorySection(
+    categories:SnapshotStateList<CategoryModel>,showCategoryLoading:Boolean
+){
+    Text(text = "Explorer Stores",
+        fontSize = 20.sp,
+        fontWeight = FontWeight.SemiBold,
+        modifier = Modifier.padding(horizontal = 16.dp).padding(top=24.dp)
+    )
+}
+
+
+@Composable
 fun CategoryItem(
     category:CategoryModel,
     modifier: Modifier=Modifier,
