@@ -45,16 +45,24 @@ fun DashboardScreen() {
     val viewModel=DashboardRepository()
     val categories=remember{ mutableListOf<CategoryModel>()}
     var showCategoryLoading by remember{mutableStateOf(value = true)}
-
+    val banners=remember{ mutableListOf<BannerModel>()}
+    var showBannerLoading by remember{mutableStateOf(value = true)}
     LaunchedEffect(Unit){
         viewModel.loadCategory().observeForever{
+            banners.clear()
+            banners.addAll(it)
+            showBannerLoading=false
+
+        }
+    }
+    LaunchedEffect(Unit){
+        viewModel.loadBanner().observeForever{
             categories.clear()
             categories.addAll(it)
             showCategoryLoading=false
 
         }
     }
-    
     
     
     Scaffold(
