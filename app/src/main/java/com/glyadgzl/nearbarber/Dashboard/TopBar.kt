@@ -16,6 +16,24 @@ fun TopBar(){
             top.linkTo(parent.top)
         }
 )
+Image(
+   painter = painterResource(R.drawable.building),
+   contentDescription = null,
+   modifier = Modifier.constrainAs(building) {
+       bottom.linkTo(bluebox.bottom)
+   }
+)
+
+Image(
+   painter = painterResource(R.drawable.profile),
+   contentDescription = null,
+   modifier = Modifier
+       .padding(horizontal = horizontalPadding, vertical = verticalPadding)
+       .constrainAs(profile) {
+           top.linkTo(parent.top)
+           end.linkTo(parent.end)
+       }
+)
 
     }
 }
