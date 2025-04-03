@@ -17,7 +17,7 @@ fun TopTitle(title:String="title",onBackClick:()->Unit={}) {
            Image(painter = painterResource(R.drawable.back),
                contentDescription = null,
                modifier = Modifier
-                   .clickable { }
+                   .clickable {obBackClick()} 
            )
            
            Text(
