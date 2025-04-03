@@ -14,9 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NearBarber"
         tools:targetApi="31">
+        <activity
+            android:name=".Map.MapActivity"
+            android:exported="false" />
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyCQYAHJWlWOd0nneY6yF45HtmCw_N6In2A" />
+
         <activity
             android:name=".Results.ResultActivity"
             android:exported="false" />
