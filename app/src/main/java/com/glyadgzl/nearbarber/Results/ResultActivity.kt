@@ -55,6 +55,17 @@ LaunchedEffect (Unit) {
         showPopularLoading = false
     }
 }
+val nearest= remember { mutableStateListOf<NearestModel>() }
+
+var showNearestLoading by remember { mutableStateOf(value: true) }
+
+LaunchedEffect (Unit) {
+    viewModel.loadNearest(id).observeForever {
+        nearest.clear()
+        nearest.addAll(it)
+        showNearestLoading = false
+    }
+}
 
     LazyColumn (
         modifier=Modifier.fillMaxSize().
