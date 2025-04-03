@@ -77,5 +77,6 @@ LaunchedEffect (Unit) {
         }
         item{SubCategorySection(subCategory,showsubCategoryLoading)}
         item{PopularSection(popular,showPopularLoading)}
+        item{NearestSection(nearest,showNearestLoading)}
     }
 }
