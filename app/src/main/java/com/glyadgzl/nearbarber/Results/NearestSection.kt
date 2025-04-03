@@ -30,10 +30,11 @@ fun NearestSection(list:SnapshotStateList<NearestModel>, showNearestLoading: Boo
         }
 
      }else{
-        LazyRow(
+        LazyColumn(
             modifier = Modifier
+            .height(400.dp)
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(12.dp),
+
             contentPadding = PaddingValues(start = 16.dp, end = 16.dp, top = 8.dp)
          ) {
             items(list.size) { index ->
@@ -83,12 +84,18 @@ fun StoreDetail(item: StoreModel) {
    maxLines = 1,
    modifier = Modifier.padding(start = 4.dp)
 )
-}
+
 Text(
-   text = item.Title,
+   text = item.Activity,
    color = Color.Black,
    fontSize = 14.sp,
-   fontWeight = FontWeight.Bold,
+   fontWeight = FontWeight.SemiBold,
+   maxLines = 1)
+   Text(
+   text = "Hours:${item.Hours}",
+   color = Color.Black,
+   fontSize = 14.sp,
+   fontWeight = FontWeight.SemiBold,
    maxLines = 1)
        
    }
