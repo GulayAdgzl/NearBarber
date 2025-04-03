@@ -72,6 +72,11 @@ fun CategorySection(
                                 .padding(horizontal = 8.dp),
                             onItemClick = {
                                 // Handle click event
+                                val intent=Intent(context,ResultsActivity::class.java).apply{
+                                    putExtra("id",categoryModel.Id)
+                                    putExtra("title",categoryModel.Name)
+                                }
+                                startActivity(context,intent,null)
                             }
                         )
                     }
