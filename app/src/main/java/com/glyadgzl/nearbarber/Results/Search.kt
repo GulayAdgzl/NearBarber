@@ -22,6 +22,13 @@ fun Search(){
            focusedBorderColor = Color.Transparent,
            unfocusedLabelColor = Color.Transparent,
            textColor = Color.DarkGray,
+           unfocusedBorderColor = Color.Transparent,
        ),
+       modifier=Modifier
+           .fillMaxWidth()
+           .padding(16.dp)
+           .height(50.dp)
+           .background(colorResource(R.color.grey),CircleShape)
+           
    )
     }

@@ -33,5 +33,8 @@ fun ResultList(id: String="1", title: String="", onBackClick: () -> Unit={}) {
         background(color = colorResource(R.color.light_blue))
     ){ 
         item{TopTitle(title,onBackClick)}
+        item{
+            Search()
+        }
     }
 }
