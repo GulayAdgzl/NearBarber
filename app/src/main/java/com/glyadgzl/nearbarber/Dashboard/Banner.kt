@@ -9,6 +9,7 @@ fun Banner(banners: SnapshotStateList<BannerModel>, showBannerLoading: Boolean) 
             CircularProgressIndicator()
         }
     }else{
+        Sliding(banners = banners)
         
     }
 }
@@ -21,6 +22,18 @@ fun Sliding(
 ){
     HorizontalPager(count=banners.size,
         state = pagerState
-    ) { 
+    ) { page ->
+        AsyncImage(
+   model = ImageRequest.Builder(LocalContext.current)
+       .data(banners[page].image)
+       .build(),
+   contentDescription = null,
+   contentScale = ContentScale.FillBounds,
+   modifier = Modifier
+       .fillMaxSize()
+       .padding(16.dp)
+       .clip(RoundedCornerShape(10.dp))
+       .height(150.dp)
+)
     }
 }
