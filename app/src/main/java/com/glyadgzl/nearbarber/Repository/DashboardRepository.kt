@@ -1,10 +1,17 @@
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+
 class DashboardRepository {
 
     private val firebaseDatabase = FirebaseDatabase.getInstance()
 
     fun loadCategory(): LiveData<MutableList<CategoryModel>> {
         val listData = MutableLiveData<MutableList<CategoryModel>>()
-        firebaseDatabase.getReference(path: "Category")
+       val ref= firebaseDatabase.getReference( "Category")
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val list = mutableListOf<CategoryModel>()
@@ -18,7 +25,7 @@ class DashboardRepository {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO(reason: "Not yet implemented")
+                TODO( "Not yet implemented")
             }
         })
         return listData

@@ -68,7 +68,7 @@ implementation("com.google.code.gson:gson:2.10.1")
 implementation("androidx.constraintlayout:constraintlayout-compose:1.1.1")
 implementation("androidx.compose.foundation:foundation:1.7.8")
 implementation("com.google.accompanist:accompanist-systemuicontroller:0.36.0")
-implementation("com.google.maps.android:maps-compose:2.0")
+
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.google.firebase.database)

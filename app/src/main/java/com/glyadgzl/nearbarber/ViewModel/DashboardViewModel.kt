@@ -1,6 +1,8 @@
+import androidx.lifecycle.LiveData
+
 class DashboardViewModel{
-    privateval repository=DashboardViewModel()
-    fun loadCategory():LiveData<MutableList<CategoryModel>>{
+    private val repository=DashboardViewModel()
+    fun loadCategory(): LiveData<MutableList<CategoryModel>> {
         return repository.loadCategory()
     }
 }
