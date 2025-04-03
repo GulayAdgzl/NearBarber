@@ -85,3 +85,43 @@ fun DashboardScreen() {
         }
     
 }
+@Composable
+fun MapScreen(latLng: LatLng, item: StoreModel) {
+   val cameraPositionState = rememberCameraPositionState {
+       position = CameraPosition.fromLatLngZoom(latLng, zoom: 15f)
+   }
+   
+   val context = LocalContext.current
+   
+   ConstraintLayout {
+       val (map, detail) = createRefs()
+       
+       GoogleMap(
+           modifier = Modifier
+               .fillMaxSize()
+               .constrainAs(map) {
+                   centerTo(parent)
+               },
+           cameraPositionState = cameraPositionState
+       ) {
+           Marker(state = MarkerState(position = latLng), title = "Location Marker")
+       }
+       
+       LazyColumn (
+           modifier = Modifier
+               .wrapContentHeight()
+               .padding(horizontal = 24.dp, vertical = 32.dp)
+               .fillMaxWidth()
+               .background(Color.White, shape =RoundedCornerShape(10.dp)) 
+               .padding(16.dp)
+               .constrainAs(detail) {
+                bottom.linkTo(parent.bottom)
+                start.linkTo(parent.start)
+                end.linkTo(parent.end)
+             }
+       ) {
+        item{ItemsNearest( item)}
+        item{}
+        }
+   }
+       }
