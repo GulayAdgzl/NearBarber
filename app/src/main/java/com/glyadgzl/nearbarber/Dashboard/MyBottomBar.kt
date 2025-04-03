@@ -1,7 +1,37 @@
 @Composable
 @Preview
 fun MyBottomBar(){
-    val bottomMenuItemsList=
+    val bottomMenuItemsList = prepareBottomMenu()
+    val context = LocalContext.current
+    var selected by remember { mutableStateOf(value = "Home") }
+    
+    BottomAppBar(
+        backgroundColor = colorResource(R.color.white),
+        elevation = 3.dp
+    ) {
+        bottomMenuItemsList.forEach { bottomMenuItems ->
+            BottomNavigationItem(
+                selected = (selected == bottomMenuItems.label),
+                onClick = {
+                    selected = bottomMenuItems.label
+                    Toast.makeText(context, bottomMenuItems.label, Toast.LENGTH_SHORT).show()
+                },
+                icon = {
+                    Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                        Icon(
+                            painter = bottomMenuItems.icon,
+                            contentDescription = null,
+                            tint = colorResource(R.color.darkBrown),
+                            modifier = Modifier
+                                .padding(top = 8.dp)
+                                .size(20.dp)
+                        )
+                    }
+                }
+            )
+        }
+    }
+    
 }
 data class BottomMenuItem(
     val label:String,val icon:Painter
