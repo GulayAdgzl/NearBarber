@@ -26,6 +26,12 @@ fun MyBottomBar(){
                                 .padding(top = 8.dp)
                                 .size(20.dp)
                         )
+                        Text(
+                            text=bottomMenuItems.label,
+                            fontSize = 12.sp,
+                            color= colorResource(R.color.darkBrown),
+                            modifier = Modifier.padding(top = 8.dp),
+                        )
                     }
                 }
             )
