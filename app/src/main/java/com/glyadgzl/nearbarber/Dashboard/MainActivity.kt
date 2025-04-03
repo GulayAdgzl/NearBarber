@@ -55,6 +55,7 @@ fun DashboardScreen() {
                     .padding(paddingValues=innerPadding)
             ) {
                 item{TopBar()}
+                item{CategorySection(categories ,showCategoryLoading)}
             }
         }
     
