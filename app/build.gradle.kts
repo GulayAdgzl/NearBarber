@@ -53,6 +53,7 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
+    implementation(libs.play.services.maps)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -60,7 +61,7 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-
+    implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
     implementation("io.coil-kt:coil-compose:2.2.2")
 implementation("com.google.accompanist:accompanist-pager-indicators:0.28.0")
 implementation("com.google.accompanist:accompanist-pager:0.28.0")
@@ -72,7 +73,12 @@ implementation("androidx.constraintlayout:constraintlayout-compose:1.1.1")
 implementation("androidx.compose.foundation:foundation:1.7.8")
 implementation("com.google.accompanist:accompanist-systemuicontroller:0.36.0")
 implementation ("com.google.maps.android:maps-compose:2.0.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
+    implementation("androidx.compose.material:material-icons-extended:1.5.4")
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.google.firebase.database)
+
+
+
 }

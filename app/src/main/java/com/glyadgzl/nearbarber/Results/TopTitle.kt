@@ -43,7 +43,7 @@ fun TopTitle(title:String="title",onBackClick:()->Unit={}) {
        modifier = Modifier
            .fillMaxWidth()
            .height(150.dp)
-           .background(color = colorResource(R.color.blue))
+           .background(color = colorResource(R.color.grey))
    ) {
        Row(
            modifier = Modifier
@@ -59,7 +59,7 @@ fun TopTitle(title:String="title",onBackClick:()->Unit={}) {
            )
            
            Text(
-            text = title + " Stores Result",
+            text = title,
             fontSize = 20.sp,
             color = Color.White,
             modifier = Modifier
@@ -67,8 +67,7 @@ fun TopTitle(title:String="title",onBackClick:()->Unit={}) {
                 .padding(horizontal = 16.dp),
             fontWeight = FontWeight.Bold
          )
-         Image(painter = painterResource(R.drawable.sample)
-            , contentDescription = null)
+
        }
     }
 }

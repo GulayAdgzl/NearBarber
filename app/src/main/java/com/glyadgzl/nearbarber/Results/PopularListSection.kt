@@ -1,3 +1,4 @@
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -33,7 +34,9 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import coil.compose.AsyncImage
+import com.glyadgzl.nearbarber.Map.MapActivity
 import com.glyadgzl.nearbarber.R
 
 @Composable
@@ -92,7 +95,7 @@ fun PopularSection(list:SnapshotStateList<StoreModel>, showPopularLoading: Boole
                     .background(Color.White, shape = RoundedCornerShape(10.dp))
                     .padding(8.dp)
                     .clickable {
-                        val intent=Intent(context, MapActivity::class.java).apply{
+                        val intent= Intent(context, MapActivity::class.java).apply{
                             putExtra("object", item)
                         }
                         startActivity(context, intent, null)

@@ -1,3 +1,4 @@
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -30,7 +31,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat.startActivity
 import coil.compose.AsyncImage
+import com.glyadgzl.nearbarber.Map.MapActivity
 import com.glyadgzl.nearbarber.R
 
 @Composable
@@ -90,7 +93,7 @@ fun NearestSection(list: SnapshotStateList<StoreModel>, showNearestLoading: Bool
                 .clickable {
                     // Handle click event here
 
-                    val intent=Intent(context, MapActivity::class.java).apply{
+                    val intent= Intent(context, MapActivity::class.java).apply{
                         putExtra("object", item)
                     }
                     startActivity(context, intent, null)

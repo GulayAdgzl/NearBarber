@@ -51,8 +51,9 @@ fun SubCategorySection(
     } else {
         LazyColumn(
             modifier = Modifier
+
                 .fillMaxWidth(),
-                //horizontalArrangement = Arrangement.SpacedBy(12.dp),
+               // horizontalArrangement = Arrangement.SpacedBy(12.dp),
                 contentPadding = PaddingValues
                 (start=16.dp,end=16.dp,top=8.dp)
 
