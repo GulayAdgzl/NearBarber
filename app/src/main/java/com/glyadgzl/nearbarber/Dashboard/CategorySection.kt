@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -14,17 +16,28 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat.startActivity
 import coil.compose.AsyncImage
+import com.glyadgzl.nearbarber.R
 import com.glyadgzl.nearbarber.Results.ResultsActivity
+
 
 
 @Composable
@@ -32,14 +45,7 @@ fun CategorySection(
     categories: MutableList<CategoryModel>,
     showCategoryLoading: Boolean
 ) {
-    Text(
-        text = "Categori",
-        fontSize = 20.sp,
-        fontWeight = FontWeight.SemiBold,
-        modifier = Modifier
-            .padding(horizontal = 16.dp)
-            .padding(top = 24.dp)
-    )
+
 
     if (showCategoryLoading) {
         Box(
@@ -48,7 +54,7 @@ fun CategorySection(
                 .height(200.dp),
             contentAlignment = Alignment.Center
         ) {
-            CircularProgressIndicator()
+           CircularProgressIndicator()
         }
     } else {
         val rows = categories.chunked(3)
@@ -100,25 +106,63 @@ fun CategoryItem(
     modifier: Modifier = Modifier,
     onItemClick: () -> Unit
 ) {
-    Column(
+    Box(
         modifier = modifier
-            .fillMaxWidth()
-
+            .aspectRatio(0.75f) // Kart oranı, dikey daha uzun görünüm
+            .clip(RoundedCornerShape(16.dp))
             .clickable(onClick = onItemClick)
-            .padding(8.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AsyncImage(
             model = category.ImagePath,
             contentDescription = null,
-            modifier = Modifier.size(100.dp) // Resim boyutu büyütüldü
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .fillMaxSize()
         )
-        Text(
-            text = category.Name,
-            color = Color.Black,
-            fontSize = 14.sp,
-            fontWeight = FontWeight.SemiBold,
-            modifier = Modifier.padding(top = 8.dp)
+
+        // Alt yazı overlay
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(
+                    Brush.verticalGradient(
+                        colors = listOf(Color.Transparent, Color.Black.copy(alpha = 0.6f)),
+                        startY = 200f
+                    )
+                )
+        )
+
+        Column(
+            modifier = Modifier
+                .align(Alignment.BottomStart)
+                .padding(12.dp)
+        ) {
+            Text(
+                text = "${category.Name}",
+                color = Color.White,
+                fontSize = 16.sp,
+                fontWeight = FontWeight.SemiBold
+            )
+
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun CategorySectionPreview() {
+    val sampleCategories = remember {
+        mutableStateListOf(
+            CategoryModel(1, "Technology", R.drawable.sample.toString()),
+            CategoryModel(2, "Science", "https://via.placeholder.com/150"),
+            CategoryModel(3, "Art", "https://via.placeholder.com/150"),
+            CategoryModel(4, "Sports", "https://via.placeholder.com/150"),
+            CategoryModel(5, "Music", "https://via.placeholder.com/150")
         )
     }
+
+    CategorySection(
+        categories = sampleCategories,
+        showCategoryLoading = false
+    )
 }

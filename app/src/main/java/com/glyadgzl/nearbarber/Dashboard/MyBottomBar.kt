@@ -23,58 +23,54 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.glyadgzl.nearbarber.R
-
 @Composable
-@Preview
-fun MyBottomBar(){
+fun MyBottomBar(navController: NavController) {
     val bottomMenuItemsList = prepareBottomMenu()
     val context = LocalContext.current
-    var selected by remember { mutableStateOf(value = "Home") }
+    var selected by remember { mutableStateOf("Home") }
 
-    BottomAppBar(
-
-
-
-
-    ) {
-        bottomMenuItemsList.forEach { bottomMenuItems ->
+    BottomAppBar {
+        bottomMenuItemsList.forEach { bottomMenuItem ->
             BottomNavigationItem(
-                selected = (selected == bottomMenuItems.label),
+                selected = (selected == bottomMenuItem.label),
                 onClick = {
-                    selected = bottomMenuItems.label
-                    Toast.makeText(context, bottomMenuItems.label, Toast.LENGTH_SHORT).show()
+                    selected = bottomMenuItem.label
+                    Toast.makeText(context, bottomMenuItem.label, Toast.LENGTH_SHORT).show()
+
+                    when (bottomMenuItem.label) {
+                        "ChatBot" -> navController.navigate("chat")
+                        "Home" -> navController.navigate("dashboard")
+                        // İstersen burada Profile vs. de ekleyebilirsin
+                    }
                 },
                 icon = {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(
-                            painter = bottomMenuItems.icon,
+                            painter = bottomMenuItem.icon,
                             contentDescription = null,
-
                             modifier = Modifier
                                 .padding(top = 8.dp)
-                                .background(Color.Transparent)
                                 .size(20.dp)
                         )
-
                     }
                 }
             )
         }
     }
-
 }
+
 data class BottomMenuItem(
-    val label:String,val icon: Painter
+    val label: String,
+    val icon: Painter
 )
 
 @Composable
-fun prepareBottomMenu():List<BottomMenuItem>{
-    val bottomMenuItemsList= listOf(
+fun prepareBottomMenu(): List<BottomMenuItem> {
+    return listOf(
         BottomMenuItem("Home", painterResource(id = R.drawable.btn_1)),
 
-        BottomMenuItem("Profile", painterResource(id = R.drawable.btn_4)),
         BottomMenuItem("ChatBot", painterResource(id = R.drawable.btn_2))
     )
-    return bottomMenuItemsList
 }

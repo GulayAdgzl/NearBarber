@@ -2,8 +2,7 @@
 import android.graphics.Bitmap
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ahmedapps.geminichatbot.data.Chat
-import com.ahmedapps.geminichatbot.data.ChatData
+
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
@@ -33,6 +32,8 @@ class ChatViewModel : ViewModel() {
                     it.copy(prompt = event.newPrompt)
                 }
             }
+
+            else -> {}
         }
     }
 

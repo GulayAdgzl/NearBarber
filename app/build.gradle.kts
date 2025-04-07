@@ -75,6 +75,9 @@ implementation("com.google.accompanist:accompanist-systemuicontroller:0.36.0")
 implementation ("com.google.maps.android:maps-compose:2.0.0")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation("androidx.compose.material:material-icons-extended:1.5.4")
+    implementation ("androidx.navigation:navigation-compose:2.7.7")
+
+
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.analytics)
     implementation(libs.google.firebase.database)

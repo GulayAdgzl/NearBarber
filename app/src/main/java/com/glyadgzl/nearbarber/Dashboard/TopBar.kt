@@ -23,7 +23,7 @@ fun TopBar(){
 
 
     ConstraintLayout(modifier= Modifier.fillMaxWidth().wrapContentHeight()){
-        val(bluebox,title1,title2,profile,building,whiteBox)=createRefs()
+        val(bluebox,profile,building)=createRefs()
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -34,7 +34,7 @@ fun TopBar(){
                 }
         )
         Image(
-            painter = painterResource(R.drawable.building),
+            painter = painterResource(R.drawable.g),
             contentDescription = null,
             modifier = Modifier.constrainAs(building) {
                 bottom.linkTo(bluebox.bottom)
@@ -42,7 +42,7 @@ fun TopBar(){
         )
 
         Image(
-            painter = painterResource(R.drawable.profile),
+            painter = painterResource(R.drawable.pp),
             contentDescription = null,
             modifier = Modifier
 

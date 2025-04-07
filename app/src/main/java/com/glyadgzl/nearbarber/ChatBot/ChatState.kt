@@ -1,5 +1,5 @@
 import android.graphics.Bitmap
-import com.ahmedapps.geminichatbot.data.Chat
+
 
 
 data class ChatState (
