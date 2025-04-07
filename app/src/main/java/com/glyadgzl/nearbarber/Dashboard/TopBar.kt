@@ -42,7 +42,7 @@ fun TopBar(){
         )
 
         Image(
-            painter = painterResource(R.drawable.pp),
+            painter = painterResource(R.drawable.profile),
             contentDescription = null,
             modifier = Modifier
 

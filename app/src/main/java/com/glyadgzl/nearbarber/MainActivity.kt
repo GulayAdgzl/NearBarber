@@ -94,8 +94,7 @@ fun DashboardScreen(navController: NavController) {
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    Toast.makeText(context, "Chat butonuna tıklandı", Toast.LENGTH_SHORT).show()
-                    // navController.navigate("chat_screen") gibi bir şey de yapılabilir
+                    navController.navigate("chat_screen")
                 },
                 containerColor = Color.White,
                 shape = CircleShape
