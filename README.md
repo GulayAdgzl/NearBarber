@@ -11,6 +11,7 @@ Bu proje, **Jetpack Compose** kullanılarak geliştirilen bir Android uygulamas�
 - 💬 **ChatBot** Desteği (Metin ve Görsel Girdili)
 - 🧠 MVVM Mimarisi
 - ☁️ **Firebase Realtime Database** Entegrasyonu
+- 📍 Google Maps Entegrasyonu (Yakındaki kuaförleri harita üzerinde gösterme)
 - 🧭 **Navigation Component** ile Sayfa Geçişleri
 
 ---
@@ -22,7 +23,11 @@ Bu proje, **Jetpack Compose** kullanılarak geliştirilen bir Android uygulamas�
 - **StateFlow & ViewModel** (Android Architecture Components)
 - **Firebase Realtime Database**
 - **SpeechRecognizer API**
+- **Google Maps API**
 
+
+## Google Harita Aktivitesi
+Uygulama, Google Maps API kullanarak, yakındaki kuaförlerin harita üzerinde gösterilmesini sağlar.
 ---
 
 ## ChatBot Teknolojisi
