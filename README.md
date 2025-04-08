@@ -10,7 +10,8 @@ Bu proje, **Jetpack Compose** kullanılarak geliştirilen bir Android uygulamas�
 ![2](https://github.com/user-attachments/assets/adb54efc-712d-45c3-ac28-2e8991ccaa11)
 ![3](https://github.com/user-attachments/assets/391380a2-0275-447d-9115-6fb3db9a65f3)
 
-![4](https://github.com/user-attachments/assets/f1c92f76-14a7-431d-84e6-5173ef1ab139)
+![Teal and White Modern QR Code Payment Poster (6 364 x 9 inç)](https://github.com/user-attachments/assets/28896257-d9ed-4abc-bd03-7e28f239c0d4)
+
 
 ---
 ## Özellikler
