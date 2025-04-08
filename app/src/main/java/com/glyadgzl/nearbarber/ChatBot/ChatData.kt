@@ -1,5 +1,7 @@
 
 import android.graphics.Bitmap
+import androidx.core.os.BuildCompat
+import com.google.ai.client.generativeai.BuildConfig
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.ResponseStoppedException
 import com.google.ai.client.generativeai.type.content
@@ -8,15 +10,17 @@ import kotlinx.coroutines.withContext
 
 
 object ChatData {
+    val api_key = "AIzaSyCqLrT1zEbfh1uJC8IjT3kJh455U3dExkc"
 
-    val api_key = "AIzaSyB5OaRdChX4tGUuorbqY5bR8hDzpa6jzP8"
 
     suspend fun getResponse(prompt: String): Chat {
+
+
         // Model adını doğru şekilde kullanın
-        val generativeModel = GenerativeModel(
-            // API versiyonu belirtmek için farklı bir constructor kullanabilirsiniz
-            // veya en son sürümü kullanmak için basit constructor'ı kullanın
-            modelName = "gemini-pro",
+        val generativeModel =GenerativeModel(
+            // The Gemini 1.5 models are versatile and work with most use cases
+            modelName = "gemini-1.5-flash",
+            // Access your API key as a Build Configuration variable (see "Set up your API key" above)
             apiKey = api_key
         )
 
@@ -51,7 +55,7 @@ object ChatData {
         // Resim işleme için doğru modeli kullanın
         val generativeModel = GenerativeModel(
             // Resim işleme için uygun model adını kullanın
-            modelName = "gemini-1.5-pro-vision", // "gemini-pro-vision" veya "gemini-1.5-pro" da olabilir
+            modelName = "gemini-1.5-flash", // "gemini-pro-vision" veya "gemini-1.5-pro" da olabilir
             apiKey = api_key
         )
 

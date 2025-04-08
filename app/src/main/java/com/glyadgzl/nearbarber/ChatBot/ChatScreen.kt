@@ -34,6 +34,8 @@ import androidx.compose.material.icons.filled.GraphicEq
 import androidx.compose.material.icons.filled.Send
 import androidx.compose.material.icons.rounded.AddPhotoAlternate
 import androidx.compose.material.icons.rounded.Send
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -42,7 +44,10 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -105,7 +110,9 @@ fun ChatScreen(
     Column(
         modifier = Modifier
             .fillMaxSize()
+
             .padding(top = paddingValues.calculateTopPadding()),
+
         verticalArrangement = Arrangement.Bottom
     ) {
         LazyColumn(
@@ -123,26 +130,24 @@ fun ChatScreen(
                 }
             }
         }
-
+        Spacer(modifier = Modifier.height(8.dp))
         // ======= ALT GİRİŞ KISMI ========
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .background(Color(0xFFFFF7EC)) // Açık bej arka plan
+                .background((Color.White)) // Açık bej arka plan
                 .padding(8.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             // Sol "+" butonu
+            var expanded by remember { mutableStateOf(false) }
+
             Box(
                 modifier = Modifier
                     .size(40.dp)
                     .background(Color.White, shape = CircleShape)
                     .clickable {
-                        imagePicker.launch(
-                            PickVisualMediaRequest.Builder()
-                                .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly)
-                                .build()
-                        )
+                        expanded = true // Menü aç
                     },
                 contentAlignment = Alignment.Center
             ) {
@@ -151,7 +156,25 @@ fun ChatScreen(
                     contentDescription = "Add",
                     tint = Color.Gray
                 )
+
+                DropdownMenu(
+                    expanded = expanded,
+                    onDismissRequest = { expanded = false },
+                ) {
+                    DropdownMenuItem(
+                        text = { Text("Photo Gallery") },
+                        onClick = {
+                            expanded = false
+                            imagePicker.launch(
+                                PickVisualMediaRequest.Builder()
+                                    .setMediaType(ActivityResultContracts.PickVisualMedia.ImageOnly)
+                                    .build()
+                            )
+                        }
+                    )
+                }
             }
+
 
             Spacer(modifier = Modifier.width(8.dp))
 
@@ -180,7 +203,7 @@ fun ChatScreen(
                             unfocusedIndicatorColor = Color.Transparent,
                             focusedIndicatorColor = Color.Transparent
                         ),
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.weight(2f),
                         maxLines = 1,
                         singleLine = true
                     )
@@ -290,7 +313,10 @@ private fun getbitmap(uriState: StateFlow<String>): Bitmap? {
     return if (imageState is AsyncImagePainter.State.Success) {
         imageState.result.drawable.toBitmap()
     } else null
-}@Preview(showBackground = true)
+}
+
+
+@Preview(showBackground = true)
 @Composable
 fun SimpleChatScreenPreview() {
     val fakePrompt = "Merhaba, bu bir örnek mesaj!"
@@ -315,7 +341,7 @@ fun SimpleChatScreenPreview() {
                 ModelChatItem(response = "Merhaba, size nasıl yardımcı olabilirim?")
             }
         }
-
+        Spacer(modifier = Modifier.height(8.dp))
         // Chat input area styled like the image
         Row(
             modifier = Modifier

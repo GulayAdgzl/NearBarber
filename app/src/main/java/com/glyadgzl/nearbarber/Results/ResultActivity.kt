@@ -97,8 +97,9 @@ fun ResultList(id: String = "1", title: String = "", onBackClick: () -> Unit = {
         item { TopTitle(title, onBackClick) }
         item { Search() }
         item { SubCategorySection(subCategory, showSubCategoryLoading) }
-        item { PopularSection(popular, showPopularLoading) }
         item { NearestSection(nearest, showNearestLoading) }
+        item { PopularSection(popular, showPopularLoading) }
+
     }
 }
 

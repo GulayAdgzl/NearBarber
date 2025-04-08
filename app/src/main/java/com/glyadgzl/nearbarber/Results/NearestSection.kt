@@ -50,12 +50,7 @@ fun NearestSection(list: SnapshotStateList<StoreModel>, showNearestLoading: Bool
             fontWeight = FontWeight.SemiBold,
             modifier = Modifier.weight(1f)
         )
-        Text(
-            text = "See all",
-            color = Color.Black,
-            fontSize = 16.sp,
-            style = TextStyle(textDecoration = TextDecoration.Underline)
-        )
+
      }
      if(showNearestLoading){
         Box (

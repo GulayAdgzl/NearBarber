@@ -41,7 +41,7 @@ fun DashboardNavGraph(
         }
 
 
-            composable("chat") {
+            composable("chat_screen") {
                 ChatScreenWithTopBar(navController = navController, uriState = remember { MutableStateFlow("") })
             }
 

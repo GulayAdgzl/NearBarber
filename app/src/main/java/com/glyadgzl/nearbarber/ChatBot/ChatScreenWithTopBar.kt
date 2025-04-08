@@ -45,7 +45,7 @@ fun ChatScreenWithTopBar(
                     }
                 },
                 colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = Color.Gray// Koyu arka plan
+                    containerColor = Color.White// Koyu arka plan
                 )
             )
         }

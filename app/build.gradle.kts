@@ -62,6 +62,8 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation("com.google.ai.client.generativeai:generativeai:0.9.0")
+
+
     implementation("io.coil-kt:coil-compose:2.2.2")
 implementation("com.google.accompanist:accompanist-pager-indicators:0.28.0")
 implementation("com.google.accompanist:accompanist-pager:0.28.0")
