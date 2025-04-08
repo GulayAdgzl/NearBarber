@@ -1,5 +1,6 @@
 # NearBarber Jetpack Compose ile Sesli Asistan Uygulaması
 
+
 Bu proje, **Jetpack Compose** kullanılarak geliştirilen bir Android uygulamasıdır. Kullanıcıların sesli komutlarla etkileşim kurabileceği, kategori ve mağaza verilerini Firebase üzerinden alabileceği bir sistem sunar. Ayrıca görüntü ve metin tabanlı sohbet işlevi de bulunmaktadır.
 
 ---
@@ -21,6 +22,12 @@ Bu proje, **Jetpack Compose** kullanılarak geliştirilen bir Android uygulamas�
 - **StateFlow & ViewModel** (Android Architecture Components)
 - **Firebase Realtime Database**
 - **SpeechRecognizer API**
+
+---
+
+## ChatBot Teknolojisi
+
+Bu projede sohbet cevaplarını oluşturmak için **Google Gemini AI** teknolojisi kullanılmıştır. Kullanıcının metin veya görsel girdilerine göre doğal dilde yanıtlar üretir.
 
 ---
 
@@ -210,11 +217,10 @@ fun VoiceInputButton(
 
 ---
 
-## Ekran Görüntüleri 
+## Ekran Görüntüleri
 
 > Ekran görüntüleri veya demo videosu README'ye eklenebilir.
 
 ---
 
-Yeni modüller veya katkılar için PR gönderebilir ya da iletişime geçebilirsiniz 💬
-
+Yeni modüller veya katkılar için PR gönderebil
