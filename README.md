@@ -5,6 +5,14 @@ Bu proje, **Jetpack Compose** kullanılarak geliştirilen bir Android uygulamas�
 
 ---
 
+## Ekran Görüntüleri
+![1](https://github.com/user-attachments/assets/5fb9376a-1176-40e5-8581-122872b88c0e)
+![2](https://github.com/user-attachments/assets/adb54efc-712d-45c3-ac28-2e8991ccaa11)
+![3](https://github.com/user-attachments/assets/391380a2-0275-447d-9115-6fb3db9a65f3)
+
+![4](https://github.com/user-attachments/assets/f1c92f76-14a7-431d-84e6-5173ef1ab139)
+
+---
 ## Özellikler
 
 - 🔊 **Sesli Komut Tanıma** (SpeechRecognizer API)
@@ -222,9 +230,8 @@ fun VoiceInputButton(
 
 ---
 
-## Ekran Görüntüleri
 
-> Ekran görüntüleri veya demo videosu README'ye eklenebilir.
+
 
 ---
 
