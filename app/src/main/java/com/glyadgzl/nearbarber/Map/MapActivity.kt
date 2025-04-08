@@ -75,7 +75,7 @@ fun MapScreen(latLng: LatLng, item: StoreModel) {
                 },
             cameraPositionState = cameraPositionState
         ) {
-            Marker(state = MarkerState(position = latLng), title = "Konum İşaretçisi")
+            Marker(state = MarkerState(position = latLng), title = "Map Marker")
         }
 
         LazyColumn(
@@ -109,7 +109,7 @@ fun MapScreen(latLng: LatLng, item: StoreModel) {
                     }
                 ) {
                     Text(
-                        "Kuaförü Ara", fontSize = 16.sp,
+                        "Barber Call", fontSize = 16.sp,
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
                     )
