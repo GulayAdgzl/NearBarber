@@ -49,7 +49,7 @@ fun Search(){
        value=text,
        onValueChange={text=it},
        label={
-           Text(text="Find barber",
+           Text(text="Kuaför Ara",
                fontSize = 16.sp,
                color = Color.Black
            )

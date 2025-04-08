@@ -51,7 +51,7 @@ fun SubCategorySection(
             .padding(top = 16.dp)
     ) {
         Text(
-            text = "Categories",
+            text = "Kategori",
             color = Color.Black,
             fontSize = 20.sp,
             fontWeight = FontWeight.SemiBold,

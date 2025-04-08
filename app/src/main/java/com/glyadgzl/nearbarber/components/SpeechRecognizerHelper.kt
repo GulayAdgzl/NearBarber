@@ -11,7 +11,9 @@ import java.util.Locale
 
 class SpeechRecognizerHelper(
     private val context: Context,
-    private val onResult: (String) -> Unit
+    private val onResult: (String) -> Unit,
+    private val onStartListening: () -> Unit = {},
+    private val onStopListening: () -> Unit = {}
 ) {
     private var speechRecognizer: SpeechRecognizer? = null
     private var intent: Intent? = null
@@ -26,13 +28,21 @@ class SpeechRecognizerHelper(
 
             speechRecognizer?.setRecognitionListener(object : RecognitionListener {
                 override fun onReadyForSpeech(params: Bundle?) {}
-                override fun onBeginningOfSpeech() {}
+                override fun onBeginningOfSpeech() {
+                    onStartListening() // ANİMASYONU BAŞLAT
+                }
+
                 override fun onRmsChanged(rmsdB: Float) {}
                 override fun onBufferReceived(buffer: ByteArray?) {}
-                override fun onEndOfSpeech() {}
-                override fun onError(error: Int) {}
-                override fun onEvent(eventType: Int, params: Bundle?) {}
+                override fun onEndOfSpeech() {
+                    onStopListening() // ANİMASYONU DURDUR
+                }
 
+                override fun onError(error: Int) {
+                    onStopListening() // ANİMASYONU DURDUR
+                }
+
+                override fun onEvent(eventType: Int, params: Bundle?) {}
                 override fun onPartialResults(partialResults: Bundle?) {}
 
                 override fun onResults(results: Bundle?) {
@@ -53,5 +63,6 @@ class SpeechRecognizerHelper(
         speechRecognizer?.stopListening()
         speechRecognizer?.destroy()
         speechRecognizer = null
+        onStopListening()
     }
 }

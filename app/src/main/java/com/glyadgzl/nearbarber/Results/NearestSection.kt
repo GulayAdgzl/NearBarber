@@ -44,7 +44,7 @@ fun NearestSection(list: SnapshotStateList<StoreModel>, showNearestLoading: Bool
             .padding(top = 16.dp)
      ) {
         Text(
-            text = "Nearest Stores",
+            text = "Yakınımdaki Kuaför",
             color = Color.Black,
             fontSize = 20. sp,
             fontWeight = FontWeight.SemiBold,

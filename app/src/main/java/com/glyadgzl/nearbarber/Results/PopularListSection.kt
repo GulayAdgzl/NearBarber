@@ -47,7 +47,7 @@ fun PopularSection(list: List<StoreModel>, showPopularLoading: Boolean) {
             .padding(top = 16.dp)
      ) {
         Text(
-            text = "Popular Stores",
+            text = "Popüler Kuförler",
             color = Color.Black,
             fontSize = 20.sp,
             fontWeight = FontWeight.SemiBold,

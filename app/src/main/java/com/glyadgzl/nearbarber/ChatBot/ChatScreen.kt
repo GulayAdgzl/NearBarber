@@ -8,6 +8,11 @@ import androidx.activity.compose.ManagedActivityResultLauncher
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.RepeatMode
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.infiniteRepeatable
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -54,6 +59,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Color.Companion.Green
 import androidx.compose.ui.graphics.asImageBitmap
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
@@ -81,14 +87,30 @@ fun ChatScreen(
     val chatState = chaViewModel.chatState.collectAsState().value
     val bitmap = getbitmap(uriState)
     val context = LocalContext.current
-
+    var isListening by remember { mutableStateOf(false) }
     val speechHelper = remember {
-        SpeechRecognizerHelper(context) { result ->
-            chaViewModel.onEvent(ChatUiEvent.UpdatePrompt(result))
-            chaViewModel.onEvent(ChatUiEvent.SendPrompt(result, bitmap))
-            uriState.update { "" }
-        }
+        SpeechRecognizerHelper(
+            context = context,
+            onResult = { result ->
+                chaViewModel.onEvent(ChatUiEvent.UpdatePrompt(result))
+                chaViewModel.onEvent(ChatUiEvent.SendPrompt(result, bitmap))
+                uriState.update { "" }
+            },
+            onStartListening = { isListening = true },
+            onStopListening = { isListening = false }
+        )
     }
+
+
+
+    val scale by animateFloatAsState(
+        targetValue = if (isListening) 1.4f else 1f,
+        animationSpec = infiniteRepeatable(
+            animation = tween(durationMillis = 500, easing = FastOutSlowInEasing),
+            repeatMode = RepeatMode.Reverse
+        ),
+        label = "voiceScale"
+    )
 
 
     val permissionLauncher = rememberLauncherForActivityResult(
@@ -162,7 +184,7 @@ fun ChatScreen(
                     onDismissRequest = { expanded = false },
                 ) {
                     DropdownMenuItem(
-                        text = { Text("Photo Gallery") },
+                        text = { Text("Galeri") },
                         onClick = {
                             expanded = false
                             imagePicker.launch(
@@ -182,14 +204,14 @@ fun ChatScreen(
             Box(
                 modifier = Modifier
                     .weight(1f)
-                    .height(45.dp)
+                    .height(50.dp)
                     .background(Color.White, shape = RoundedCornerShape(24.dp)),
                 contentAlignment = Alignment.CenterStart
             ) {
                 Row(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(horizontal = 16.dp),
+                        .padding(horizontal = 8.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     TextField(
@@ -197,13 +219,13 @@ fun ChatScreen(
                         onValueChange = {
                             chaViewModel.onEvent(ChatUiEvent.UpdatePrompt(it))
                         },
-                        placeholder = { Text("Type a message..") },
+                        placeholder = { Text("Bir şeyler yaz..") },
                         colors = TextFieldDefaults.textFieldColors(
                             containerColor = Color.Transparent,
                             unfocusedIndicatorColor = Color.Transparent,
                             focusedIndicatorColor = Color.Transparent
                         ),
-                        modifier = Modifier.weight(2f),
+                        modifier = Modifier.weight(3f),
                         maxLines = 1,
                         singleLine = true
                     )
@@ -212,21 +234,27 @@ fun ChatScreen(
                     Icon(
                         imageVector = Icons.Default.GraphicEq,
                         contentDescription = "Voice",
-                        tint = Color.Gray,
+                        tint = if (isListening) MaterialTheme.colorScheme.primary else Color.Gray,
                         modifier = Modifier
                             .size(20.dp)
+                            .graphicsLayer {
+                                scaleX = scale
+                                scaleY = scale
+                            }
                             .clickable {
                                 if (ContextCompat.checkSelfPermission(
                                         context,
                                         android.Manifest.permission.RECORD_AUDIO
                                     ) == PackageManager.PERMISSION_GRANTED
                                 ) {
+                                    isListening = true
                                     speechHelper.startListening()
                                 } else {
-                                    permissionLauncher.launch( android.Manifest.permission.RECORD_AUDIO)
+                                    permissionLauncher.launch(android.Manifest.permission.RECORD_AUDIO)
                                 }
                             }
                     )
+
                     // Spacer to add space between the two icons
                     Spacer(modifier = Modifier.width(16.dp)) // Adjust the width as needed
                     Icon(
