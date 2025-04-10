@@ -236,4 +236,4 @@ fun VoiceInputButton(
 
 ---
 
-Yeni modüller veya katkılar için PR gönderebil
+Yeni modüller veya katkılar için PR gönderebilirsiniz.
